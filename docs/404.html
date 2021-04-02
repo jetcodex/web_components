@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Not Found</title>
+    <style>
+        #gray {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            background-color: gray;
+        }
+
+        #disc {
+            position: absolute;
+            top: calc(50% - 10px);
+            left: calc(50% - 10px);
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background-color: black;
+            box-shadow: 0 0 6px black;
+        }
+
+        .title {
+            font-size: 100px;
+            text-align: center;
+            margin: 0 20px;
+        }
+
+        #subtitle {
+            margin-top: 20px;
+            font-size: 32px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div style="height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center;flex-direction: column;">
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <div class="title">4</div>
+        <div id="gray" style="position: relative;">
+            <div id="disc"></div>
+        </div>
+        <div class="title">4</div>
+    </div>
+    <div id="subtitle">Not found dear</div>
+</div>
+</body>
+<script>
+    const disc = document.getElementById('disc');
+    const radius = 25;
+    window.addEventListener('mousemove', function (event) {
+        let x = event.clientX;
+        let y = event.clientY;
+        x = x / (window.innerWidth / (radius * 2));
+        y = y / (window.innerHeight / (radius * 2));
+        x -= radius;
+        y -= radius;
+        x = x === 0 ? x : x + 'px';
+        y = y === 0 ? y : y + 'px';
+        disc.style.transform = 'translate(' + x + ', ' + y + ')';
+    });
+</script>
+</html>
